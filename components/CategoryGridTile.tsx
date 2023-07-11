@@ -4,12 +4,13 @@ import React from 'react';
 type CategoryProp = {
   title: string;
   color: string;
+  onPress: ()=>void
 };
 
-const CategoryGridTile = ({title, color}: CategoryProp) => {
+const CategoryGridTile = ({title, color,onPress}: CategoryProp) => {
   return (
     <View style={[styles.gridItem,{backgroundColor: color}]}>
-      <Pressable android_ripple={{color:'#ccc'}} style={({pressed}) => [styles.button, pressed? styles.buttonPressed:null]} onPress={() => {}}>
+      <Pressable android_ripple={{color:'#ccc'}} style={({pressed}) => [styles.button, pressed? styles.buttonPressed:null]} onPress={onPress}>
         <View style={styles.innerContainer}>
           <Text style={styles.title}>{title}</Text>
         </View>

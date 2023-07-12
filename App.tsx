@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MealsOverview from './screens/MealsOverview';
 import FavouritesScreen from './screens/FavouritesScreen';
+import FavouritesContextProvider from './store/context/favoutires-context';
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator();
@@ -21,12 +22,14 @@ function App(): JSX.Element {
   }
 
   return (
+    <FavouritesContextProvider>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='Home' component={Home} options={{headerShown:false}}/>
         <Stack.Screen name='MealsOverview' component={MealsOverview}/>
       </Stack.Navigator>
     </NavigationContainer>
+    </FavouritesContextProvider>
   );
 }
 

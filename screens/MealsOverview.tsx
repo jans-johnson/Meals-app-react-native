@@ -1,8 +1,9 @@
-import {StyleSheet, FlatList, View} from 'react-native';
+import {StyleSheet, FlatList, View, Button, Pressable} from 'react-native';
 import React,{useLayoutEffect} from 'react';
 import {CATEGORIES, MEALS} from '../data/dummy-data';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import MealItem from '../components/MealItem';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const MealsOverview = () => {
   const route = useRoute();
@@ -19,6 +20,13 @@ const MealsOverview = () => {
     )?.title
     navigation.setOptions({
         title:categoryTitle,
+        headerRight: () => (
+          <Pressable onPress={()=>{
+            console.log('pressed')
+          }}>
+            <Icon name="star" size={30} color="#950" />
+          </Pressable>
+        ),
     })
   },[])
   return (
